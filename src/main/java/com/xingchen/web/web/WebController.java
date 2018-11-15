@@ -1,16 +1,19 @@
 package com.xingchen.web.web;
 
 import com.xingchen.web.model.User;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class WebController {
-    @RequestMapping(name="/getUser", method= RequestMethod.POST)
+    @RequestMapping(name="/getUser")
     public List<User> getUser() {
         List<User> list = new ArrayList<>();
 
@@ -26,5 +29,16 @@ public class WebController {
         list.add(user2);
         return list;
 
+    }
+
+    @RequestMapping("/saveUser")
+    public void saveUser(@Valid User user, BindingResult result) {
+        System.out.println("user:"+user);
+        if(result.hasErrors()) {
+            List<ObjectError> list = result.getAllErrors();
+            for (ObjectError error : list) {
+                System.out.println(error.getCode()+ "-" + error.getDefaultMessage());
+            }
+        }
     }
 }
