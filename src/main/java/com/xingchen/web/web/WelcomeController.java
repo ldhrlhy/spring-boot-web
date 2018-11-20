@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Controller
 public class WelcomeController {
-    @GetMapping("/")
+    @GetMapping("/welcome")
     public String welcome(Map<String, Object> model) {
         model.put("time", new Date());
         model.put("message", "helloooo world");

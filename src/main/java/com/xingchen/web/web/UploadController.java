@@ -30,8 +30,8 @@ public class UploadController {
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
             // UPLOADED_FOLDER 文件本地存储地址
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            Files.write(path, bytes);
+//            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//            Files.write(path, bytes);
 
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
@@ -55,8 +55,8 @@ public class UploadController {
         for(MultipartFile file:files){
             try {
                 byte[] bytes = file.getBytes();
-                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-                Files.write(path, bytes);
+//                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//                Files.write(path, bytes);
             } catch (IOException e) {
                 e.printStackTrace();
             }
