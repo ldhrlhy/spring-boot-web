@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/web")
 public class WebController {
     @RequestMapping(name="/getUser")
     public List<User> getUser() {
